@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.coggs.ankicarscanner.MainActivity"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/carView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/icon_anki"
+        android:layout_marginBottom="32dp"
+        android:layout_above="@+id/result_textview"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/oracle_clr"
+        android:layout_above="@+id/scan_barcode_button"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/result_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/iconView"
+        android:layout_toEndOf="@+id/speedTV"
+        android:freezesText="true"
+        android:gravity="center"
+        android:text="@string/no_barcode_captured"
+        android:textAlignment="center"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/scan_barcode_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_barcode_button"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorWhite"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/speedTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/textpanel"
+        android:text="Max Speed"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/batteryTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/speedTV"
+        android:layout_marginEnd="63dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="37dp"
+        android:background="@drawable/textpanel"
+        android:text="Battery Life"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/avgTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/batteryTV"
+        android:layout_marginEnd="13dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="68dp"
+        android:layout_toStartOf="@+id/iconView"
+        android:background="@drawable/textpanel"
+        android:text="Avg Speed"
+        android:elevation="2dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/lapTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/iconView"
+        android:layout_below="@+id/avgTV"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="119dp"
+        android:background="@drawable/textpanel"
+        android:elevation="2dp"
+        android:text="Number of Laps"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/eventTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/carView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/textpanel"
+        android:elevation="2dp"
+        android:text="Event Detail"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+</RelativeLayout>
