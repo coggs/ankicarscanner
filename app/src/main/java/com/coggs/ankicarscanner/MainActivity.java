@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
                     Point[] p = barcode.cornerPoints;
 
                     //mResultTextView.setText(barcode.displayValue);
-                    Log.i("ANKITEST", barcode.displayValue);
+                    //Log.i("ANKITEST", barcode.displayValue);
 
                     JSON_URL =  getString(R.string.ankiURL)+ barcode.displayValue;
 
-                    Log.i("ANKITEST", JSON_URL);
+                    //Log.i("ANKITEST", JSON_URL);
                     //Toast.makeText(this, JSON_URL, Toast.LENGTH_SHORT).show();
                     loadCarData();
 
@@ -117,41 +117,45 @@ public class MainActivity extends AppCompatActivity {
                             //so here we are getting that json array
                             JSONArray itemArray = obj.getJSONArray("items");
 
-                            //now looping through all the elements of the json array
-                            for (int i = 0; i < itemArray.length(); i++) {
-                                //getting the json object of the particular index inside the array
-                                JSONObject itemObject = itemArray.getJSONObject(i);
+                           // Test for a no data response
+                            if (itemArray.length() != 0) {
+                                //now looping through all the elements of the json array
+                                for (int i = 0; i < itemArray.length(); i++) {
+                                    //getting the json object of the particular index inside the array
+                                    JSONObject itemObject = itemArray.getJSONObject(i);
 
-                                //creating a hero object and giving them the values from json object
-                                //Hero hero = new Hero(heroObject.getString("name"), heroObject.getString("imageurl"));
+                                    //creating a hero object and giving them the values from json object
+                                    //Hero hero = new Hero(heroObject.getString("name"), heroObject.getString("imageurl"));
 
-                                String carName = (itemObject.getString("carname")).toLowerCase().replace(" ","");
-                                Log.i("ANKI", carName);
+                                    String carName = (itemObject.getString("carname")).toLowerCase().replace(" ", "");
+                                    //Log.i("ANKITEST", carName);
 
-                                int imageid = getResources().getIdentifier(carName, "drawable",getPackageName());
-                                carView.setImageResource(imageid);
+                                    int imageid = getResources().getIdentifier(carName, "drawable", getPackageName());
+                                    carView.setImageResource(imageid);
 
-                                String carPanel = carName;
-                                speedTV.setText(getString(R.string.speed) + " "+ itemObject.getString("maxspeed"));
-                                batteryTV.setText(getString(R.string.battery) + " " + itemObject.get("batterylevel") + "mv");
-                                lapTV.setText(getString(R.string.laps) + " " + itemObject.get("lapcount"));
-                                avgTV.setText(getString(R.string.avg) + " " + itemObject.get("avg"));
-                                eventTV.setText(getString(R.string.event) + " " + itemObject.get("event"));
+                                    String carPanel = carName;
+                                    speedTV.setText(getString(R.string.speed) + " " + itemObject.getString("maxspeed"));
+                                    batteryTV.setText(getString(R.string.battery) + " " + itemObject.get("batterylevel") + "mv");
+                                    lapTV.setText(getString(R.string.laps) + " " + itemObject.get("lapcount"));
+                                    avgTV.setText(getString(R.string.avg) + " " + itemObject.get("avg"));
+                                    eventTV.setText(getString(R.string.event) + " " + itemObject.get("event"));
 
-                                speedTV.setVisibility(View.VISIBLE);
-                                batteryTV.setVisibility(View.VISIBLE);
-                                lapTV.setVisibility(View.VISIBLE);
-                                avgTV.setVisibility(View.VISIBLE);
-                                eventTV.setVisibility(View.VISIBLE);
+                                    speedTV.setVisibility(View.VISIBLE);
+                                    batteryTV.setVisibility(View.VISIBLE);
+                                    lapTV.setVisibility(View.VISIBLE);
+                                    avgTV.setVisibility(View.VISIBLE);
+                                    eventTV.setVisibility(View.VISIBLE);
 
-                                // carPanel += "\nCrashes Today: " + itemObject.getString("crashes");
-                                //carPanel += "\nLaps Today: " + itemObject.getString("lapcount");
-                                //carPanel += "\n\n at " + itemObject.get("event");
-                                // speed, avg, lap, event, battery
+                                    // carPanel += "\nCrashes Today: " + itemObject.getString("crashes");
+                                    //carPanel += "\nLaps Today: " + itemObject.getString("lapcount");
+                                    //carPanel += "\n\n at " + itemObject.get("event");
+                                    // speed, avg, lap, event, battery
 
-                                mResultTextView.setText(carPanel);
+                                    mResultTextView.setText(carPanel);
 
-                                // set screen elements
+                                }
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Car has not raced today", Toast.LENGTH_LONG).show();
                             }
 
                             //adding the adapter to listview
@@ -167,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         //displaying the error in toast if occurrs
 
-                        Toast.makeText(getApplicationContext(), "ANKITEST" + error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "ANKITEST:" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
