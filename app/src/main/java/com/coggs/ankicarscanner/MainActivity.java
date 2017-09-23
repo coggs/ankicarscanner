@@ -123,39 +123,9 @@ public class MainActivity extends AppCompatActivity {
                             if (itemArray.length() != 0) {
                                 //now looping through all the elements of the json array
                                 for (int i = 0; i < itemArray.length(); i++) {
+
                                     //getting the json object of the particular index inside the array
-                                    JSONObject itemObject = itemArray.getJSONObject(i);
-
-                                    //creating a hero object and giving them the values from json object
-                                    //Hero hero = new Hero(heroObject.getString("name"), heroObject.getString("imageurl"));
-
-                                    String icn_carName = (itemObject.getString("carname")).toLowerCase().replace(" ", "");
-                                    //Log.i("ANKITEST", carName);
-
-                                    int imageid = getResources().getIdentifier(icn_carName, "drawable", getPackageName());
-                                    carView.setImageResource(imageid);
-
-                                    String carPanel = itemObject.getString("carname");
-                                    speedTV.setText(getString(R.string.speed) + " " + itemObject.getString("maxspeed"));
-                                    batteryTV.setText(getString(R.string.battery) + " " + itemObject.get("batterylevel") + "mv");
-                                    lapTV.setText(getString(R.string.laps) + " " + itemObject.get("lapcount"));
-                                    flapTV.setText(getString(R.string.fastest_lap) + " " + itemObject.get("fastestlap") + "s");
-                                    avgTV.setText(getString(R.string.avg) + " " + itemObject.get("avg"));
-                                    eventTV.setText(getString(R.string.event) + " " + itemObject.get("event"));
-
-                                    speedTV.setVisibility(View.VISIBLE);
-                                    batteryTV.setVisibility(View.VISIBLE);
-                                    lapTV.setVisibility(View.VISIBLE);
-                                    flapTV.setVisibility(View.VISIBLE);
-                                    avgTV.setVisibility(View.VISIBLE);
-                                    eventTV.setVisibility(View.VISIBLE);
-
-                                    // carPanel += "\nCrashes Today: " + itemObject.getString("crashes");
-                                    //carPanel += "\nLaps Today: " + itemObject.getString("lapcount");
-                                    //carPanel += "\n\n at " + itemObject.get("event");
-                                    // speed, avg, lap, event, battery
-
-                                    mResultTextView.setText(carPanel);
+                                    setUI(itemArray.getJSONObject(i));
 
                                 }
                             } else {
@@ -187,6 +157,50 @@ public class MainActivity extends AppCompatActivity {
 
         //adding the string request to request queue
         requestQueue.add(stringRequest);
+    }
+
+    private void setUI(JSONObject itemObject) {
+        //creating a hero object and giving them the values from json object
+        //Hero hero = new Hero(heroObject.getString("name"), heroObject.getString("imageurl"));
+
+        try {
+        String icn_carName = (itemObject.getString("carname")).toLowerCase().replace(" ", "");
+        //Log.i("ANKITEST", carName);
+
+        int batterylvl = (int) itemObject.get("batterylevel");
+        int batterymax = (int) itemObject.get("hi_battery");
+        int batterymin = (int) itemObject.get("low_battery");
+        float batterypc = 1-((batterymax-batterylvl) / (batterymax - batterymin));
+        Log.i("ANKITEST", String.valueOf(batterypc));
+            //round(1-(max_lvl-current_lvl)/(max_lvl - min_lvl),2)
+
+        int imageid = getResources().getIdentifier(icn_carName, "drawable", getPackageName());
+        carView.setImageResource(imageid);
+
+        String carPanel = itemObject.getString("carname");
+        speedTV.setText(getString(R.string.speed) + " " + itemObject.getString("maxspeed"));
+        batteryTV.setText(getString(R.string.battery) + " " + itemObject.get("batterylevel") + "mv");
+        lapTV.setText(getString(R.string.laps) + " " + itemObject.get("lapcount"));
+        flapTV.setText(getString(R.string.fastest_lap) + " " + itemObject.get("fastestlap") + "s");
+        avgTV.setText(getString(R.string.avg) + " " + itemObject.get("avg"));
+        eventTV.setText(getString(R.string.event) + " " + itemObject.get("event"));
+
+        speedTV.setVisibility(View.VISIBLE);
+        batteryTV.setVisibility(View.VISIBLE);
+        lapTV.setVisibility(View.VISIBLE);
+        flapTV.setVisibility(View.VISIBLE);
+        avgTV.setVisibility(View.VISIBLE);
+        eventTV.setVisibility(View.VISIBLE);
+
+        // carPanel += "\nCrashes Today: " + itemObject.getString("crashes");
+        //carPanel += "\nLaps Today: " + itemObject.getString("lapcount");
+        //carPanel += "\n\n at " + itemObject.get("event");
+        // speed, avg, lap, event, battery
+
+        mResultTextView.setText(carPanel);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 }
