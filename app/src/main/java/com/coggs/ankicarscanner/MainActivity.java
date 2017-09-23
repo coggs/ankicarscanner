@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView speedTV;
     private TextView avgTV;
     private TextView lapTV;
+    private TextView flapTV;
     private TextView eventTV;
     private TextView batteryTV;
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         batteryTV = (TextView) findViewById(R.id.batteryTV);
         avgTV = (TextView) findViewById(R.id.avgTV);
         lapTV = (TextView) findViewById(R.id.lapTV);
+        flapTV = (TextView) findViewById(R.id.flapTV);
         eventTV = (TextView) findViewById(R.id.eventTV);
 
         carIcon = (ImageView) findViewById(R.id.iconView);
@@ -127,22 +129,24 @@ public class MainActivity extends AppCompatActivity {
                                     //creating a hero object and giving them the values from json object
                                     //Hero hero = new Hero(heroObject.getString("name"), heroObject.getString("imageurl"));
 
-                                    String carName = (itemObject.getString("carname")).toLowerCase().replace(" ", "");
+                                    String icn_carName = (itemObject.getString("carname")).toLowerCase().replace(" ", "");
                                     //Log.i("ANKITEST", carName);
 
-                                    int imageid = getResources().getIdentifier(carName, "drawable", getPackageName());
+                                    int imageid = getResources().getIdentifier(icn_carName, "drawable", getPackageName());
                                     carView.setImageResource(imageid);
 
-                                    String carPanel = carName;
+                                    String carPanel = itemObject.getString("carname");
                                     speedTV.setText(getString(R.string.speed) + " " + itemObject.getString("maxspeed"));
                                     batteryTV.setText(getString(R.string.battery) + " " + itemObject.get("batterylevel") + "mv");
                                     lapTV.setText(getString(R.string.laps) + " " + itemObject.get("lapcount"));
+                                    flapTV.setText(getString(R.string.fastest_lap) + " " + itemObject.get("fastestlap") + "s");
                                     avgTV.setText(getString(R.string.avg) + " " + itemObject.get("avg"));
                                     eventTV.setText(getString(R.string.event) + " " + itemObject.get("event"));
 
                                     speedTV.setVisibility(View.VISIBLE);
                                     batteryTV.setVisibility(View.VISIBLE);
                                     lapTV.setVisibility(View.VISIBLE);
+                                    flapTV.setVisibility(View.VISIBLE);
                                     avgTV.setVisibility(View.VISIBLE);
                                     eventTV.setVisibility(View.VISIBLE);
 
