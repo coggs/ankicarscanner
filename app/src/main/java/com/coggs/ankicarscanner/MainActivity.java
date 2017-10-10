@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView speedTV;
     private TextView avgTV;
     private TextView lapTV;
+    private TextView distTV;
+    private TextView disttdTV;
     private TextView flapTV;
     private TextView eventTV;
     private TextView batteryTV;
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         batteryTV = (TextView) findViewById(R.id.batteryTV);
         avgTV = (TextView) findViewById(R.id.avgTV);
         lapTV = (TextView) findViewById(R.id.lapTV);
+        distTV = (TextView) findViewById(R.id.distTV);
+        disttdTV = (TextView) findViewById(R.id.disttdTV);
         flapTV = (TextView) findViewById(R.id.flapTV);
         eventTV = (TextView) findViewById(R.id.eventTV);
 
@@ -181,6 +185,8 @@ public class MainActivity extends AppCompatActivity {
         speedTV.setText(getString(R.string.speed) + " " + itemObject.getString("maxspeed"));
         batteryTV.setText(getString(R.string.battery) + " " + itemObject.get("batterylevel") + "mv");
         lapTV.setText(getString(R.string.laps) + " " + itemObject.get("lapcount"));
+        distTV.setText(getString(R.string.Distance) + " " + itemObject.get("totdist"));
+        disttdTV.setText(getString(R.string.DistanceTD) + " " + itemObject.get("tddist"));
         flapTV.setText(getString(R.string.fastest_lap) + " " + itemObject.get("fastestlap") + "s");
         avgTV.setText(getString(R.string.avg) + " " + itemObject.get("avg"));
         eventTV.setText(getString(R.string.event) + " " + itemObject.get("event"));
@@ -188,6 +194,8 @@ public class MainActivity extends AppCompatActivity {
         speedTV.setVisibility(View.VISIBLE);
         batteryTV.setVisibility(View.VISIBLE);
         lapTV.setVisibility(View.VISIBLE);
+        distTV.setVisibility(View.VISIBLE);
+        disttdTV.setVisibility(View.VISIBLE);
         flapTV.setVisibility(View.VISIBLE);
         avgTV.setVisibility(View.VISIBLE);
         eventTV.setVisibility(View.VISIBLE);
