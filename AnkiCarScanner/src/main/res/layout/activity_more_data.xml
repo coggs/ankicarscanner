@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.coggs.ankicarscanner.moreDataActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <LinearLayout
+        android:paddingLeft="5dp"
+        android:paddingTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/laps"
+            android:textSize="18dp"
+            android:text="@string/laps_text" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cars"
+            android:textSize="18dp"
+            android:text="@string/cars_text" />
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/crashes"
+           android:textSize="18dp"
+            android:text="@string/crashes_text" />
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/devices"
+           android:textSize="18dp"
+            android:text="@string/devices_text" />
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/distance"
+           android:textSize="18dp"
+            android:text="@string/distance_text" />
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstreg"
+           android:textSize="18dp"
+            android:text="@string/first_registration_text" />
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastreg"
+           android:textSize="18dp"
+            android:text="@string/latest_registration_text" />
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/messages"
+           android:textSize="18dp"
+            android:text="@string/number_of_messages_text" />
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/port"
+           android:textSize="18dp"
+            android:text="@string/port_text" />
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/registrations"
+           android:textSize="18dp"
+            android:text="@string/registrations_text" />
+
+        <TextView
+            android:id="@+id/hostip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:text="@string/hostip_text"
+            android:textSize="24dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/driveUI"
+            android:textSize="24dp"
+            android:text="@string/driveui_text" />
+    </LinearLayout>
+</RelativeLayout>
