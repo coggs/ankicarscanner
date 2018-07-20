@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AnkiCarScanner/AnkiCarScanner.iml" filepath="$PROJECT_DIR$/AnkiCarScanner/AnkiCarScanner.iml" />
       <module fileurl="file://$PROJECT_DIR$/ankicarscanner.iml" filepath="$PROJECT_DIR$/ankicarscanner.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
